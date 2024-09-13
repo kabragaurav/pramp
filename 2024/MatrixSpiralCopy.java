@@ -35,23 +35,28 @@ class Solution {
         int col1 = 0, col2 = N-1;
         
         while (row1 <= row2 && col1 <= col2) {
-            if (dir == 0) {
-                for (int j=col1; j<=col2; j++) 
+        switch (dir) {
+            case 0: 
+                for (int j=col1; j<=col2; j++)
                     ls[index++] = matrix[row1][j];
                 row1++;
-            } else if (dir == 1) {
-                for (int i=row1; i<=row2; i++) 
+                break;
+            case 1: 
+                for (int i=row1; i<=row2; i++)
                     ls[index++] = matrix[i][col2];
                 col2--;
-            } else if (dir == 2) {
-                for (int j=col2; j>=col1; j--) 
+                break;
+            case 2: 
+                for (int j=col2; j>=col1; j--)
                     ls[index++] = matrix[row2][j];
                 row2--;
-            } else {
-                for (int i=row2; i>=row1; i--) 
+                break;
+            default: 
+                for (int i=row2; i>=row1; i--)
                     ls[index++] = matrix[i][col1];
                 col1++;
-            }
+                break;
+        }
             
             dir = ++dir % 4;
         }

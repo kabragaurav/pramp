@@ -36,28 +36,28 @@ import java.util.*;
 class Solution {
     private static TreeMap<Integer, Integer> timeToInside;
 
-static int findBusiestPeriod(int[][] datas) {
-    timeToInside = new TreeMap<>();
-    int inside = 0;
-    for (int[] data : datas) {
-    int unixTime = data[0];
-    int visitor = data[1];
-    boolean didEnter = data[2] == 1 ? true : false;
-    inside += didEnter ? visitor : -visitor;
-    timeToInside.put(unixTime, inside);
+    static int findBusiestPeriod(int[][] datas) {
+        timeToInside = new TreeMap<>();
+        int inside = 0;
+        for (int[] data : datas) {
+            int unixTime = data[0];
+            int visitor = data[1];
+            boolean didEnter = data[2] == 1;
+            inside += didEnter ? visitor : -visitor;
+            timeToInside.put(unixTime, inside);
+        }
+
+        int maxInside = Collections.max(timeToInside.values());
+        for (Map.Entry<Integer, Integer> entry : timeToInside.entrySet()) {
+            if (maxInside == entry.getValue()) {
+                return entry.getKey();
+            }
+        }
+        return -1;
     }
 
-    int maxInside = Collections.max(timeToInside.values());
-    for (Map.Entry<Integer, Integer> entry : timeToInside.entrySet()) {
-    if (maxInside == entry.getValue()) {
-        return entry.getKey();
-    }
-    }
-    return -1;
-}
+    public static void main(String[] args) {
 
-public static void main(String[] args) {
-
-}
+    }
 
 }
