@@ -15,6 +15,9 @@ In the first example, all brackets are properly closed and nested, so the result
 
 Constraints
 The string s has a length of at most 10^4.
+
+@author gauravkabra
+@since 2024
  */
 
  import java.util.Stack;

@@ -29,6 +29,9 @@ Constraints:
 
 1 ≤ data.length ≤ 100
 [output] integer
+
+@author gauravkabra
+@since 2024
  */
 
 import java.util.*;

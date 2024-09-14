@@ -19,6 +19,9 @@ Constraints:
 
 0 ≤ k ≤ 20
 [output] array.integer
+
+@author gauravkabra
+@since 2024
  */
 
  import java.util.*;

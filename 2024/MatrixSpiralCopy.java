@@ -19,6 +19,9 @@ Constraints:
 1 ≤ inputMatrix[0].length ≤ 100
 1 ≤ inputMatrix.length ≤ 100
 [output] array.integer
+
+@author gauravkabra
+@since 2024
  */
 
 class Solution {

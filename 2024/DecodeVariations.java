@@ -19,6 +19,9 @@ Constraints:
 
 1 ≤ S.length ≤ 12
 [output] integer
+
+@author gauravkabra
+@since 2024
  */
 
 import java.util.*;

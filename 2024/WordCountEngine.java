@@ -20,6 +20,9 @@ Constraints:
 [time limit] 5000ms
 [input] string document
 [output] array.array.string
+
+@author gauravkabra
+@since 2024
  */
 
 import java.util.*;
