@@ -21,33 +21,29 @@ class Solution {
         Node parent;
 
         Node(int cost) {
-        this.cost = cost;
-        children = null;
-        parent = null;
+            this.cost = cost;
+            children = null;
+            parent = null;
         }
     }
 
     static class SalesPath {
-        private int min = Integer.MAX_VALUE;
-
         int getCheapestCost(Node root) {
-            helper(root, 0);
-            return min;
-        }
-
-        private void helper(Node root, int costSoFar) {
             if (root == null) {
-                min = Math.min(min, costSoFar);
-                return;
+                return 0;
             }
-            costSoFar += root.cost;
+            return helper(root);
+            }
+
+            private int helper(Node root) {
             if (root.children == null || root.children.length == 0) {
-                min = Math.min(min, costSoFar);
-                return;
+                return root.cost;
             }
+            int min = Integer.MAX_VALUE;
             for (Node child : root.children) {
-                helper(child, costSoFar);
+                min = Math.min(min, helper(child));
             }
+            return root.cost + min;
         }
     }
         
