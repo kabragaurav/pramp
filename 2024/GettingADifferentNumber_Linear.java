@@ -33,7 +33,6 @@ import java.util.stream.*;
 class Solution {
 
   static int getDifferentNumber(int[] arr) {
-    int N = arr.length;
     Set<Integer> nums = Arrays.stream(arr).boxed().collect(Collectors.toSet());
     for (int i=0; i<Integer.MAX_VALUE; i++) {
         if (!nums.contains(i)) {
