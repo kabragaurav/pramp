@@ -27,7 +27,7 @@ Constraints:
 
 import java.util.*;
 
-class Solution {
+class wordCountEngine {
 
   static String[][] wordCountEngine(String document) {
     document = document.toLowerCase();

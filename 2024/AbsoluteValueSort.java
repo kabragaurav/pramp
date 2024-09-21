@@ -16,7 +16,7 @@ Constraints:
 import java.util.*;
 import java.util.stream.*;
 
-class Solution {
+class AbsoluteValueSort {
     static int[] absSort(int[] arr) {
         List<Integer> ls = Arrays.stream(arr).boxed().collect(Collectors.toList());
         Collections.sort(ls, (a, b) -> {

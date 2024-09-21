@@ -34,7 +34,7 @@ Constraints:
 *    helper code is used to test findInOrderSuccessor. *
 ********************************************************/
 
-class Solution {
+class BSTSuccessorSearch {
 
     static class Node {
         

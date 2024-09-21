@@ -14,7 +14,7 @@ Explanation: The maximum sum is -1, which is the single element with the highest
 @since 2024
  */
 
-class Solution {
+class MaximumSubarraySum_Kadane {
     public int maxSubArray(int[] nums) {
         int global = Integer.MIN_VALUE;
         int local = 0;

@@ -24,7 +24,7 @@ Constraints:
 @since 2024
  */
 
-class Solution {
+class MatrixSpiralCopy {
 
   static int[] spiralCopy(int[][] matrix) {
     int M = matrix.length;

@@ -25,7 +25,7 @@ Constraints:
 
 import java.util.*;
 
-class Solution {
+class DifferenceBetweenTwoStrings {
 
 	private static List<String> l = new ArrayList<>();
     private static int len = Integer.MAX_VALUE;

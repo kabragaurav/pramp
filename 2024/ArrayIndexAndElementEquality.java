@@ -38,7 +38,7 @@ def index_equals_value_search(arr: List[int]) -> int:
     return res
 */
 
-class Solution {
+class ArrayIndexAndElementEquality {
   // TC: O(logN)
   // SC: O(1)
   static int indexEqualsValueSearch(int[] arr) {

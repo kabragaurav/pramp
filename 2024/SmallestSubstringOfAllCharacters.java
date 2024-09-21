@@ -26,7 +26,7 @@ Constraints:
 
 import java.util.*;
 
-class Solution {
+class SmallestSubstringOfAllCharacters {
     public static String getShortestUniqueSubstring(char[] chs, String s) {
         String t = new String(chs);
         HashMap<Character, Integer> tCharFreq = new HashMap<>();

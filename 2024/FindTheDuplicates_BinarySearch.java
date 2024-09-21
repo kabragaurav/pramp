@@ -33,7 +33,7 @@ import java.util.*;
     M= 2 and N=200
     O(200) vs O(2log200) -> O(2*7)~O(14)
 **/
-class Solution {
+class FindTheDuplicates_BinarySearch {
   static int[] findDuplicates(int[] arr1, int[] arr2) {
     int M = arr1.length;
     int N = arr2.length;

@@ -26,7 +26,7 @@ import java.util.*;
     TC: O(max(M, N))
     SC: O(max(M, N))
 **/
-class Solution {
+class FindTheDuplicates_Linear {
   static int[] findDuplicates(int[] arr1, int[] arr2) {
     int M = arr1.length;  // 2
     int N = arr2.length;  // 200

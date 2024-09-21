@@ -31,7 +31,7 @@ Constraints:
 
 import java.util.HashMap;
 
-class Solution {
+class CoinChange {
     private HashMap<String, Integer> cache = new HashMap<>();
 
     public int coinChange(int[] coins, int amount) {

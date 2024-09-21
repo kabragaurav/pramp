@@ -27,7 +27,7 @@ Constraints:
 */
 
 
-class Solution {
+class BracketMatch {
     public int minAddToMakeValid(String s) {
         int left = 0;
         int right = 0;

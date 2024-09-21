@@ -26,7 +26,7 @@ Constraints:
 
 import java.util.*;
 
-class Solution {
+class DecodeVariations {
     private static HashMap<String, Integer> cache;
 
     public int numDecodings(String s) {

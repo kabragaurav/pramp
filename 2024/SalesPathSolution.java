@@ -13,7 +13,7 @@ Constraints:
 [output] integer
  */
 
-class Solution {
+class SalesPathSolution {
 
     static class Node {
         int cost;

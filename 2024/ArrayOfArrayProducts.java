@@ -20,7 +20,7 @@ Constraints:
 [output] array.integer
 */
 
-class Solution {
+class ArrayOfArrayProducts {
   
   public static int[] arrayOfArrayProducts(int[] arr) {
     int N = arr.length;

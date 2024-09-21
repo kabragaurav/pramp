@@ -30,7 +30,7 @@ import java.util.stream.*;
 
 // TC: O(N)
 // SC : O(N)
-class Solution {
+class GettingADifferentNumber_Linear {
 
   static int getDifferentNumber(int[] arr) {
     Set<Integer> nums = Arrays.stream(arr).boxed().collect(Collectors.toSet());

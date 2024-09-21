@@ -22,7 +22,7 @@ The string s has a length of at most 10^4.
 
  import java.util.Stack;
 
-class Solution {
+class ValidParentheses {
     public boolean isValid(String s) {
             Stack<Character> stk = new Stack<>();
             for (char ch : s.toCharArray()) {

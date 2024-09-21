@@ -36,7 +36,7 @@ Constraints:
 
 import java.util.*;
 
-class Solution {
+class BusiestTimeInTheMall {
     private static TreeMap<Integer, Integer> timeToInside;
 
     static int findBusiestPeriod(int[][] datas) {

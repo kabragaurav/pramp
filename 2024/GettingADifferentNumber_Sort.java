@@ -29,7 +29,7 @@ import java.util.*;
 
 // TC: O(NlogN)
 // SC: O(1)
-class Solution {
+class GettingADifferentNumber_Sort {
   static int getDifferentNumber(int[] arr) {
     int N = arr.length;
     Arrays.sort(arr);

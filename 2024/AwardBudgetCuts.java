@@ -21,7 +21,7 @@ Constraints:
 
 import java.util.*;
 
-class Solution {
+class AwardBudgetCuts {
     static double findGrantsCap(double[] grants, double budget) {
         double left = 0;
         double right = Arrays.stream(grants).sum();

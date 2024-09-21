@@ -1,6 +1,3 @@
-public class MaximumSubarraySum_DP {
-    
-}
 /*
 Given an array of integers nums, write a function maxSubarraySum to find the maximum sum of a contiguous subarray within the array and return that maximum sum. The subarray must be contiguous, meaning that the elements must appear consecutively in the original array.
 
@@ -18,7 +15,7 @@ Explanation: The maximum sum is -1, which is the single element with the highest
 */
 
 // BUT IT WILL GIVE TLE
-class Solution {
+class MaximumSubarraySum_DP {
     private static int ans;
 
     static int maxSubarraySum(int[] arr) {

@@ -24,7 +24,7 @@ Constraints:
 [output] array.character
 */
 
-class Solution {
+class SentenceReverse {
 
   // SOME MORE CASES TO TEST: {'a', ' ', ' ', 'b'} and {' ', ' '}
   // EXPECTED ['b', ' ', ' ', 'a'] and [' ',' ']
