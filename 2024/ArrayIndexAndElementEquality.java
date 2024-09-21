@@ -18,6 +18,26 @@ Constraints:
 [output] integer
 */
 
+
+/*
+# Another solution
+
+def index_equals_value_search(arr: List[int]) -> int:
+    left, right = 0, len(arr)-1
+    res = -1
+
+    while left <= right:
+        mid = (left+right)//2
+
+        if arr[mid] >= mid:
+            right = mid - 1
+            res = mid if arr[mid] == mid else -1
+        else:
+            left = mid + 1
+    
+    return res
+*/
+
 class Solution {
   // TC: O(logN)
   // SC: O(1)
