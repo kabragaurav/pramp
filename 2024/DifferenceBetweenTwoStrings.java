@@ -30,8 +30,18 @@ class DifferenceBetweenTwoStrings {
 	private static List<String> l = new ArrayList<>();
     private static int len = Integer.MAX_VALUE;
 
-    private static void helper(String src, String target, ArrayList<String> ls, int i, int j, int l1, int l2, int edits) {
+    // TC : O(l1 * l2)
+    // SC : O(l1 * l2)
+    public static String[] diffBetweenTwoStrings(String src, String target) {
+        l.clear();
+        len = Integer.MAX_VALUE;
 
+        helper(src, target, new ArrayList<>(), 0, 0, src.length(), target.length(), 0);
+
+        return l.stream().toArray(String[]::new);
+    }
+
+    private static void helper(String src, String target, ArrayList<String> ls, int i, int j, int l1, int l2, int edits) {
         if (i == l1 && j == l2) {           // if both are at end
             if (edits < len) {
                 len = edits;
@@ -40,7 +50,7 @@ class DifferenceBetweenTwoStrings {
             return;
         }
 
-        if (i >= l1) {                      // if only i is at end
+        if (i == l1) {                      // if only i is at end
             while (j < l2) {
                 ls.add("+" + target.charAt(j));
                 edits++;
@@ -53,7 +63,7 @@ class DifferenceBetweenTwoStrings {
             return;
         }
 
-        if (j >= l2) {                      // if only j is at end
+        if (j == l2) {                      // if only j is at end
             while (i < l1) {
                 ls.add("-" + src.charAt(i));
                 edits++;
@@ -66,12 +76,12 @@ class DifferenceBetweenTwoStrings {
             return;
         }
 
-        if (src.charAt(i) == target.charAt(j)) {            // if chars are equal
-            ls.add("" + src.charAt(i));
+        if (src.charAt(i) == target.charAt(j)) {
+            ls.add(Character.toString(src.charAt(i)));
             helper(src, target, new ArrayList<>(ls), i+1, j+1, l1, l2, edits);
             ls.remove(ls.size() - 1);
-        } else {                                            // otherwise
-            // If there are multiple answers, use the answer that favors removing from the source first.
+        } else {
+            // If there are multiple answers, use the answer that favors removing from the src first.
             ls.add("-" + src.charAt(i));
             helper(src, target, new ArrayList<>(ls), i + 1, j, l1, l2, edits + 1);
             ls.remove(ls.size() - 1);
@@ -79,22 +89,6 @@ class DifferenceBetweenTwoStrings {
             helper(src, target, new ArrayList<>(ls), i, j + 1, l1, l2, edits + 1);
             ls.remove(ls.size() - 1);
         }
-    }
-
-    // TC : O(l1 * l2)
-    // SC : O(l1 * l2)
-    public static String[] diffBetweenTwoStrings(String src, String target) {
-        // reset globals
-        l.clear();
-        len = Integer.MAX_VALUE;
-
-        helper(src, target, new ArrayList<>(), 0, 0, src.length(), target.length(), 0);
-
-        String[] ans = new String[l.size()];
-        for (int i=0; i<l.size(); i++) {
-            ans[i] = l.get(i);
-        }
-        return ans;
     }
 
 	public static void main(String[] args) {

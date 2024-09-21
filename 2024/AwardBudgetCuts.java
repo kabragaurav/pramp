@@ -26,26 +26,28 @@ class AwardBudgetCuts {
         double left = 0;
         double right = Arrays.stream(grants).sum();
         double ans = left;
-        double epsilon = 1e-6;  // Small precision for binary search
+        double epsilon = 1e-6;  // Small precision for binary search: 1 times 10 to the power -6, or 0.000001.
         
         /**
          * For floating-point numbers, we need to stop when the range becomes very narrow, 
-         * not when the values are exactly equal (since that might never happen due to precision). 
+         * because values may never become equal due to precision. 
          * So, the condition becomes while (right - left > epsilon) to terminate the search when the difference 
          * between left and right is smaller than the tolerance (epsilon).
+         * 
          * Basically, left <= right may lead to endless loops, because left and right may be very close but never exactly equal
          */
-        while (right-left > epsilon) {   // where the two values are "close enough" that continuing the search won't yield significantly different results.
+        while (right-left > epsilon) {   // break the two values are "close enough" that continuing the search won't yield significantly different results.
             double mid = left + (right-left)/2;
             if (isPossible(grants, mid, budget)) {
                 ans = mid;
-                left = mid;  // If we increment left by 1 (as we do with integers), we might miss valid floating-point values.
+                left = mid;  // If we increment left by 1 (as we do with integers), we might miss valid floating-point values between (mid, mid+1).
             } else {
                 right = mid;
             }
         }
-        // For example, if the cap is computed as 123.45, rounding it to 123 or 124 (whole numbers) may result in grants that overshoot or undershoot the total budget.
-        return Math.round(ans * 100.0) / 100.0;  // Rounding to 2 decimal places since Math.round(double d) for ans = 4.678, calling Math.round(ans) will return 5. This might be too coarse
+        // If the cap is computed as 123.45, rounding it to 123 or 124 (whole numbers) may result in grants that overshoot or undershoot the total budget
+        // Rounding to 2 decimal places since Math.round(double d) for ans = 4.678 will return 5. This might be too coarse
+        return Math.round(ans * 100.0) / 100.0;  
     }
 
     private static boolean isPossible(double[] grants, double cap, double budget) {
