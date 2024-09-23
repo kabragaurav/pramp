@@ -25,64 +25,73 @@ Constraints:
 @since 2024
  */
 
-import java.util.*;
-
+ import java.util.ArrayList;
+ import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+ 
+ /**
+ 
+     w1 w2 w2 w1
+ 
+     w1 - 2
+     w2 - 2
+ 
+     w1 w2
+     w2 w1
+ 
+ 
+     document = "" -> []
+     document = "abc" or "aaa"
+     document = ".,"
+     document "ab,.,ab"
+     document = "     "
+     document = "AaA"
+ */
 class wordCountEngine {
-
+  // TC : O(NlogN)
+  // SC : O(N)
   static String[][] wordCountEngine(String document) {
-    document = document.toLowerCase();
-    HashMap<String, Integer> wordToFreq = new HashMap<>();
-    HashMap<String, Integer> firstIndex = new HashMap<>();
+    document = santize(document);
     String[] words = document.split("\\s+");
-    StringBuilder doc = new StringBuilder();
-    for (String word : words) {
-        doc.append(word);
-        doc.append(" ");
+    HashMap<String, Integer> wordToFreq = new HashMap<>();
+    HashMap<String, Integer> wordToFirstIndex = new HashMap<>();
+
+    for (int i=0; i<words.length; i++) {
+        String word = words[i];
+        wordToFreq.put(word, wordToFreq.getOrDefault(word, 0) + 1);
+        wordToFirstIndex.putIfAbsent(word, i);
     }
-    int N = words.length;
-    for (int i=0; i<N; i++) {
-        words[i] = removePunctuations(words[i]);
-        wordToFreq.put(words[i], wordToFreq.getOrDefault(words[i], 0) + 1);
-        if (!firstIndex.containsKey(words[i])) {
-          firstIndex.put(words[i], i);
-        }
-    }
-    List<Pair> ans = new ArrayList<>();
+    int N = wordToFreq.size();
+    List<String[]> ans = new ArrayList<>();
     for (Map.Entry<String, Integer> entry : wordToFreq.entrySet()) {
-        String word = entry.getKey();
-        int freq = entry.getValue();
-        ans.add(new Pair(word, freq));
+        ans.add(new String[] {entry.getKey(), Integer.toString(entry.getValue())});
     }
-    Collections.sort(ans, (p1, p2) -> {
-        if (p1.freq == p2.freq) {
-            return firstIndex.get(p1.word)-firstIndex.get(p2.word);
-        } else {
-            return p2.freq - p1.freq;
+    
+    Collections.sort(ans, (a, b) -> {
+        String word1 = a[0];
+        int freq1 = Integer.parseInt(a[1]);
+        String word2 = b[0];
+        int freq2 = Integer.parseInt(b[1]);
+
+        if (freq1 != freq2) {
+            return freq2-freq1;
         }
+        int order1 = wordToFirstIndex.get(word1);
+        int order2 = wordToFirstIndex.get(word2);
+        return order1-order2;
     });
 
-    String[][] ret = new String[ans.size()][2];
-    int i = 0;
-    for (Pair p : ans) {
-        ret[i++] = new String[] {p.word, Integer.toString(p.freq)};
-    }
-    return ret;
+    return ans.stream().toArray(String[][]::new);
   }
 
-  static class Pair {
-    String word;
-    int freq;
-
-    Pair(String word, int freq) {
-        this.word = word;
-        this.freq = freq;
-    }
-  }
-
-  private static String removePunctuations(String word) {
+  private static String santize(String s) {
+    s = s.toLowerCase();
+    char[] chs = s.toCharArray();
     StringBuilder sb = new StringBuilder();
-    for (char ch : word.toCharArray()) {
-        if (Character.isAlphabetic(ch)) {
+    for (char ch : chs) {
+        if (ch == ' ' || Character.isLetter(ch)) {
             sb.append(ch);
         }
     }
@@ -90,7 +99,8 @@ class wordCountEngine {
   }
 
   public static void main(String[] args) {
-    // "Look If you had One shot, Or one opportunity, To seize everything you ever wanted, In one moment, Would you capture it, Or just let it slip?"
+  // "Look If you had One shot, Or one opportunity, To seize everything you ever wanted, In one moment, Would you capture it, Or just let it slip?"
   }
 
 }
+
